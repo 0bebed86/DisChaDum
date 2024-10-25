@@ -2,7 +2,7 @@
 {
     public partial class PrimaryWindow : Form
     {
-        private static readonly Font font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        private static readonly Font _font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
 
         public PrimaryWindow()
         {
@@ -79,7 +79,7 @@
                 tree.TabIndex = 0;
                 tree.Nodes.AddRange(nodes);
                 tree.Tag = tag;
-                tree.Font = font;
+                tree.Font = _font;
             }
 
             var pageName = "tabPage" + id;
@@ -138,7 +138,7 @@
 
             var tasks = new List<Task>();
 
-            foreach(var channel in targetedChannels)
+            foreach (var channel in targetedChannels)
             {
                 tasks.Add(Task.Factory.StartNew(() => GetChannelMessages(client, channel)));
             }
@@ -172,10 +172,10 @@
         {
             var sources = new List<object>();
 
-            foreach(TabPage tab in tabControl.TabPages)
+            foreach (TabPage tab in tabControl.TabPages)
             {
                 var tag = tab.Tag;
-                if(tag == null) continue;
+                if (tag == null) continue;
 
                 sources.Add(tag);
             }

@@ -43,9 +43,9 @@ namespace dischadum
                 {
                     var name = "";
 
-                    foreach(var recipient in Recipients)
+                    foreach (var recipient in Recipients)
                     {
-                        if(name.Length > 0)
+                        if (name.Length > 0)
                         {
                             name += ", ";
                         }
@@ -221,7 +221,7 @@ namespace dischadum
 
                     before = batch[^1].Id;
 
-                    Thread.Sleep(_delay); 
+                    Thread.Sleep(_delay);
                 }
                 else if ((int)response.StatusCode == 429)
                 {
@@ -234,14 +234,15 @@ namespace dischadum
                 else
                 {
                     Trace.TraceError($"Error while getting channel {channelId} messages: {response.StatusCode}; {response.GetAnswerText()}");
-                    
+
                     break;
                 }
             }
 
             if (!string.IsNullOrEmpty(raw))
             {
-                raw = JsonSerializer.Serialize(JsonDocument.Parse(raw), new JsonSerializerOptions { 
+                raw = JsonSerializer.Serialize(JsonDocument.Parse(raw), new JsonSerializerOptions
+                {
                     WriteIndented = true,
                     Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                 });
@@ -260,6 +261,5 @@ namespace dischadum
                 await JsonSerializer.SerializeAsync(stream, messages, options);
             }
         }
-
     }
 }

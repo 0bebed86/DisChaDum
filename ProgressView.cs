@@ -4,7 +4,7 @@
     {
         public delegate bool AbortFunction(ProgressView sender);
 
-        private AbortFunction abortFunction;
+        private AbortFunction _abortFunction;
 
         public string Label
         {
@@ -17,12 +17,12 @@
             InitializeComponent();
 
             this.label.Text = label;
-            this.abortFunction = abortFunction;
+            this._abortFunction = abortFunction;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            if (abortFunction(this))
+            if (_abortFunction(this))
             {
                 DialogResult = DialogResult.Cancel;
                 Close();

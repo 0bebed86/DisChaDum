@@ -81,7 +81,7 @@ namespace dischadum
 
             Hide();
 
-            if(Callback(_client, _guild, channels))
+            if (Callback(_client, _guild, channels))
             {
                 textBoxToken.Text = null;
 

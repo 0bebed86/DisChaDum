@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace dischadum
 {
@@ -65,7 +55,7 @@ namespace dischadum
                 directory.Create();
             }
 
-            foreach(var channel in guild.Channels)
+            foreach (var channel in guild.Channels)
             {
                 SaveChannelAsync(directory, channel);
             }
@@ -95,13 +85,13 @@ namespace dischadum
             }
 
             var sources = _Sources;
-            foreach(var source in sources)
+            foreach (var source in sources)
             {
-                if(source is Core.DiscordGuild)
+                if (source is Core.DiscordGuild)
                 {
                     SaveGuild(directory, source as Core.DiscordGuild);
                 }
-                else if(source is Core.DiscordChannel)
+                else if (source is Core.DiscordChannel)
                 {
                     SaveChannelAsync(directory, source as Core.DiscordChannel);
                 }
